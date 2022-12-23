@@ -10,3 +10,6 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: validate
+
+messenger:
+  tmp-password-ttl: '${TMP_PASSWORD_TTL:600000}'

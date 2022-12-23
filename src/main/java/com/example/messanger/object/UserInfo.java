@@ -1,6 +1,7 @@
 package com.example.messanger.object;
 
 import com.example.messanger.dao.entity.UserEntity;
+import com.example.messanger.dao.entity.UserInfoEntity;
 import com.example.messanger.types.Subscription;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,8 +22,8 @@ public class UserInfo {
     private String phoneNumber;
     private Subscription subscription;
 
-    public UserEntity toEntity() {
-        return UserEntity.builder()
+    public UserInfoEntity toEntity() {
+        return UserInfoEntity.builder()
                 .id(this.id)
                 .firstName(this.firstName)
                 .secondName(this.secondName)

@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS user_accounts(
     image         BYTEA,
     image_type    VARCHAR(255),
     description   VARCHAR(1024),
-    add_info      VARCHAR(2056) NOT NULL,
+    add_info      VARCHAR(2056),
 
     PRIMARY KEY (id)
 );

@@ -11,7 +11,6 @@ public class UuidGenerator implements IdentifierGenerator {
     public Object generate(SharedSessionContractImplementor sharedSessionContractImplementor, Object o) throws HibernateException {
         Object id = sharedSessionContractImplementor
                 .getEntityPersister(null, o)
-                .getClassMetadata()
                 .getIdentifier(o, sharedSessionContractImplementor);
 
         return id != null ? id : generate();
