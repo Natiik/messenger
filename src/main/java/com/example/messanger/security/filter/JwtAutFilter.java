@@ -1,5 +1,6 @@
-package com.example.messanger.security;
+package com.example.messanger.security.filter;
 
+import com.example.messanger.security.util.JwtUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.example.messanger.security;
+package com.example.messanger.security.util;
 
 import lombok.extern.slf4j.Slf4j;
 

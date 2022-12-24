@@ -1,4 +1,4 @@
-package com.example.messanger.security;
+package com.example.messanger.security.cache;
 
 import lombok.Value;
 

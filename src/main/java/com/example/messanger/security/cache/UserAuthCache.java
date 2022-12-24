@@ -1,5 +1,6 @@
-package com.example.messanger.security;
+package com.example.messanger.security.cache;
 
+import com.example.messanger.security.util.NumericStringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class UserAuthCache {
     public String put(UUID userId){
         UserAuthInfo info = new UserAuthInfo(NumericStringUtils.generateNumbericString(6), System.currentTimeMillis());
         authInfos.put(userId, info);
-        return info.getPassword(); // todo make not return password, this is the tmp solution
+        return info.getPassword();
     }
 
     public UserAuthInfo get(UUID userId){

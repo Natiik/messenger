@@ -13,3 +13,11 @@ spring:
 
 messenger:
   tmp-password-ttl: '${TMP_PASSWORD_TTL:600000}'
+  twillio:
+    account-sid: '${TWILLIO_ACCOUNT_SID:your_sid}'
+    auth-token: '${TWILLIO_AUTH_TOKEN:your_token}'
+    mes-ser-id: '${MESSAGING_SERVICE_ID:service_id}'
+  token:
+    ttl: '${TOKEN_TTL: 286000}'
+    refresh-ttl: '${REFRESH_TTL: 360000}'
+    signing-key: '${JWT_SIGNING_KEY: w2vzolsu74js1wvpj5f0}'
