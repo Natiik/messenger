@@ -6,8 +6,8 @@ import com.example.messanger.exception.InvalidJwtTokenException;
 import com.example.messanger.object.UserInfo;
 import com.example.messanger.security.cache.UserAuthCache;
 import com.example.messanger.security.cache.UserAuthInfo;
-import com.example.messanger.security.util.JwtUtils;
 import com.example.messanger.service.UserService;
+import com.example.messanger.util.JwtUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -49,7 +49,6 @@ public class AuthService {
 
         UserInfo userInfo = info.get();
         UserAuthInfo authInfo = userAuthCache.get(userInfo.getId());
-        userAuthCache.evict(userInfo.getId());
 
         if (authInfo == null) {
             log.error("Failed to find auth info for user with pn {}", request.getPhoneNumber());

@@ -43,6 +43,7 @@ public class UserEntity {
     private String phoneNumber;
 
     @Column(name = "subscription")
+    @Enumerated(value = EnumType.STRING)
     private Subscription subscription;
 
     @Column(name = "image")
@@ -60,7 +61,7 @@ public class UserEntity {
     public User toData() {
         try {
             JsonNode addInfo = new ObjectMapper().readTree(this.additionalInfo);
-            User user = User.builder()
+            return User.builder()
                     .id(this.id)
                     .firstName(this.firstName)
                     .secondName(this.secondName)
@@ -72,7 +73,6 @@ public class UserEntity {
                     .description(this.description)
                     .additionalInfo(addInfo)
                     .build();
-            return user;
         } catch (JsonProcessingException e) {
             log.error("Failed to cast user entity to user", e);
             throw new RuntimeException(e);

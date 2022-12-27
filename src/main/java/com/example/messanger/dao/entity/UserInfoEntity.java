@@ -37,6 +37,7 @@ public class UserInfoEntity {
     private String phoneNumber;
 
     @Column(name = "subscription")
+    @Enumerated(value = EnumType.STRING)
     private Subscription subscription;
 
     public UserInfo toData() {

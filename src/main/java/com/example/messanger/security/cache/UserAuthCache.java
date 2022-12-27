@@ -1,6 +1,6 @@
 package com.example.messanger.security.cache;
 
-import com.example.messanger.security.util.NumericStringUtils;
+import com.example.messanger.util.NumericStringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class UserAuthCache {
     private final ConcurrentMap<UUID, UserAuthInfo> authInfos = new ConcurrentHashMap<>();
 
     public String put(UUID userId){
-        UserAuthInfo info = new UserAuthInfo(NumericStringUtils.generateNumbericString(6), System.currentTimeMillis());
+        UserAuthInfo info = new UserAuthInfo(NumericStringUtils.generateNumericString(6), System.currentTimeMillis());
         authInfos.put(userId, info);
         return info.getPassword();
     }

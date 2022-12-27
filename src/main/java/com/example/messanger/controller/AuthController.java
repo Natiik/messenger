@@ -1,6 +1,7 @@
 package com.example.messanger.controller;
 
 import com.example.messanger.controller.model.request.LoginRequest;
+import com.example.messanger.controller.model.request.PhoneNumberRequest;
 import com.example.messanger.controller.model.response.JwtToken;
 import com.example.messanger.exception.SmsSendingException;
 import com.example.messanger.object.UserInfo;
@@ -23,11 +24,11 @@ public class AuthController {
     private final SmsSendingService smsSendingService;
 
     @PostMapping("/send")
-    public ResponseEntity<?> sendTemporaryPassword(@RequestParam String phoneNumber) {
+    public ResponseEntity<?> sendTemporaryPassword(@RequestBody PhoneNumberRequest request) {
         try {
-            UserInfo userInfo = userService.findUserInfoOrCreateNew(phoneNumber);
+            UserInfo userInfo = userService.findUserInfoOrCreateNew(request.getPhoneNumber());
             String tmpPass = authService.createTmpPassword(userInfo.getId());
-            smsSendingService.sendTmpPassword("+" + userInfo.getPhoneNumber(), tmpPass);
+            smsSendingService.sendTmpPassword(userInfo.getPhoneNumber(), tmpPass);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

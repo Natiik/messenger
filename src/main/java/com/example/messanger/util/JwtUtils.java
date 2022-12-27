@@ -1,4 +1,4 @@
-package com.example.messanger.security.util;
+package com.example.messanger.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
