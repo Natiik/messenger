@@ -2,6 +2,7 @@ package com.example.messanger.util;
 
 import com.example.messanger.exception.IllegalOperationException;
 import com.example.messanger.object.LogInUser;
+import com.example.messanger.object.User;
 import com.example.messanger.object.UserInfo;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,7 +32,7 @@ public class Validator {
             throw new IllegalArgumentException("User info can't be null");
         }
         if (userInfo.getId() == null || !currentUser.getUserId().equals(userInfo.getId())) {
-            log.error("User with id {} is trying to modify user with id {}", currentUser.getUserId(), userInfo.getId());
+            log.error("User with id {} is trying to modify user info with id {}", currentUser.getUserId(), userInfo.getId());
             throw new IllegalOperationException();
         }
         if (userInfo.getPhoneNumber() == null) {
@@ -43,6 +44,30 @@ public class Validator {
 
         if (userInfo.getFirstName() == null) {
             log.error("Trying to save user {} with null first name", userInfo.getId());
+            throw new IllegalArgumentException("First name can't be null");
+        }
+    }
+
+    public static void validateUser(LogInUser currentUser, User user) {
+        if (user == null) {
+            log.error("User object can't be null");
+            throw new IllegalArgumentException("User can't be null");
+        }
+
+        if (user.getId() == null || !currentUser.getUserId().equals(user.getId())) {
+            log.error("User with id {} is trying to modify user with  id {}", currentUser.getUserId(), user.getId());
+            throw new IllegalOperationException();
+        }
+
+        if (user.getPhoneNumber() == null) {
+            log.error("Trying to save user with null phoneNumber");
+            throw new IllegalArgumentException("Phone number is null");
+        }
+
+        validatePhoneNumber(user.getPhoneNumber());
+
+        if (user.getFirstName() == null) {
+            log.error("Trying to save user {} with null first name", user.getId());
             throw new IllegalArgumentException("First name can't be null");
         }
     }
